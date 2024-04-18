@@ -19,11 +19,17 @@ const config = {
     },
     extend: {
       colors: {
-        cyan: "hsl(var(--cyan))",
-        cyanLight: "hsl(var(--cyan-light))",
-        brightYellow: "hsl(var(--bright-yellow))",
-        lightGray: "hsl(var(--light-gray))",
-        grayishBlue: "hsl(var(--grayish-blue))",
+        "marine-blue": "hsl(var(--marine-blue))",
+        "purplish-blue": "hsl(var(--purplish-blue))",
+        "pastel-blue": "hsl(var(--pastel-blue))",
+        "light-blue": "hsl(var(--light-blue))",
+        "strawberry-red": "hsl(var(--strawberry-red))",
+
+        "cool-gray": "hsl(var(--cool-gray))",
+        "light-gray": "hsl(var(--light-gray))",
+        "magnolia": "hsl(var(--magnolia))",
+        "alabaster": "hsl(var(--alabaster))",
+        "white": "hsl(var(--white))", 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -3,42 +3,57 @@ import {
   Card,
   CardContent
 } from "@/components/ui/card"
+import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-16">
-      <Card className="flex flex-row flex-wrap max-w-xl">
-        <CardContent className="bg-white rounded-t-sm sm:p-8 p-6 flex flex-col">
-          <h1 className="font-extrabold text-cyan text-xl">Join our community</h1>
-          <h2 className="text-brightYellow font-semibold pt-5">30-day, hassle-free money back guarantee</h2>
-          <p className="text-slate-400 font-light pt-2 pb-2 text-sm">Gain access to our full library of tutorials along with expert code reviews.
-            Perfect for any developers who are serious about honing their skills.</p>
-        </CardContent>
-        <CardContent className="bg-cyan flex flex-col gap-4 text-slate-50 w-full sm:w-1/2 sm:rounded-bl-sm sm:p-8 p-6 sm:pt-8">          
-          <h1 className="font-bold">Monthly Subscription</h1>
-          
-          <div className="sm:pb-2">
-          <p className="text-3xl font-semibold">$29 <span className="text-sm  align-middle  font-thin">per month</span></p>
-          <p className="font-light text-sm m-1">Full access for less than $1 a day</p>
-          
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 gap-8
+    bg-fixed
+    bg-magnolia
+    bg-top bg-no-repeat bg-contain
+    bg-[url('/images/bg-sidebar-mobile.svg')] 
+    sm:bg-none " >
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem >
+            <PaginationLink className="rounded-full border text-white" href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink className="rounded-full border text-white" href="#">2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink className="rounded-full border text-white" href="#">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink className="rounded-full border text-white" href="#">4</PaginationLink>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+
+      <Card className="p-2">
+        <CardContent className="sm:bg-[url('/images/bg-sidebar-desktop.svg')] bg-contain bg-no-repeat">
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">Personal info</h2>
+          <p className="text-gray-600 mb-6">Please provide your name, email address, and phone number.</p>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2">Name</label>
+            <input type="text" id="name" placeholder="e.g. Stephen King" className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
-          
-          <Button className="bg-brightYellow w-full shadow-lg ">Sign Up</Button>
-        </CardContent>
-        <CardContent className="bg-cyanLight sm:p-8 p-6 flex flex-col gap-3 justify-items-center text-slate-50 rounded-b-sm  w-full sm:w-1/2 sm:rounded-bl-none" >
-          <h1 className="font-bold">Why us</h1>
-          <ul className="font-extralight text-sm">
-            <li>Tutorials by industry experts</li>
-            <li>Peer & expert code review</li>
-            <li>Coding exercises</li>
-            <li>Access to our GitHub repos</li>
-            <li>Community forum</li>
-            <li>Flashcard decks</li>
-            <li>New videos every week</li>
-          </ul>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">Email Address</label>
+            <input type="email" id="email" placeholder="e.g. stephenking@lorem.com" className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="phone" className="block text-gray-700 text-sm font-semibold mb-2">Phone Number</label>
+            <input type="tel" id="phone" placeholder="e.g. +1 234 567 890" className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          </div>
         </CardContent>
       </Card>
+      <footer className="absolute inset-x-0 bottom-0 bg-white p-4">
 
+        <Button className="float-right bg-marine-blue hover:bg-pastel-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">
+          Next Step
+        </Button>
+      </footer>
     </main>
   );
 }
