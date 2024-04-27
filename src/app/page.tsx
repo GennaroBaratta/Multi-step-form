@@ -31,35 +31,36 @@ export default function Home() {
     bg-magnolia
     bg-top bg-no-repeat bg-contain
     bg-[url('/images/bg-sidebar-mobile.svg')] 
-    sm:bg-none" >
+    sm:bg-none">
       <div className="sm:hidden">
-        <StepPagination mobile={true} steps={steps} nav={handleStepByIndex}/>
+        <StepPagination mobile={true} steps={steps} nav={handleStepByIndex} />
       </div>
 
-      <Card className="p-2 sm:mt-16 flex flex-row justify-start ">
-        <div className="hidden  sm:block  rounded-lg 
+      <Card className="p-2 sm:mt-16 flex flex-row justify-start w-full max-w-4xl aspect-[8/5]">
+        <div className="hidden sm:block rounded-lg 
         sm:bg-[url('/images/bg-sidebar-desktop.svg')] 
         bg-cover
         bg-no-repeat 
-        pr-8
+        md:pr-8
         shrink-0
-         ">
-          <StepPagination mobile={false} steps={steps} nav={handleStepByIndex}/>
-
+        w-[30%]">
+          <StepPagination mobile={false} steps={steps} nav={handleStepByIndex} />
         </div>
 
-        <CardContent className="md:px-16 md:pt-12 pt-4  ">
+        <CardContent className="flex-grow flex flex-col justify-between md:px-16 md:pt-12 pt-4 overflow-y-auto h-full">
+
           <StepContent step={step} />
           <Button
+            type="button"
             onClick={handleNext}
-            className="mt-16  sm:block hidden float-right bg-marine-blue hover:bg-pastel-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">
+            className="self-end bg-marine-blue hover:bg-pastel-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Next Step
           </Button>
         </CardContent>
+
       </Card>
       <footer className="block sm:hidden fixed inset-x-0 bottom-0 bg-white p-4">
-
-        <Button className="float-right bg-marine-blue hover:bg-pastel-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">
+        <Button className="float-right bg-marine-blue hover:bg-pastel-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Next Step
         </Button>
       </footer>

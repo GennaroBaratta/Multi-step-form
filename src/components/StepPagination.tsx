@@ -22,7 +22,7 @@ export default function StepPagination({ mobile, steps, nav }: { mobile: boolean
                             <PaginationLink
 
                                 onClick={() => { nav(step.id - 1) }}
-                                className="rounded-full border text-white w-7 h-7" href="#">{step.id}</PaginationLink>
+                                className="rounded-full border text-white w-7 h-7 aspect-square" href="#">{step.id}</PaginationLink>
                             <div>
                                 <div className="font-light text-cool-gray text-xs">STEP {step.id}</div>
                                 <div className="font-medium text-white text-sm">{step.title}</div>
