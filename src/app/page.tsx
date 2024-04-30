@@ -47,7 +47,7 @@ export default function Home() {
           <StepPagination mobile={false} steps={steps} nav={handleStepByIndex} />
         </div>
 
-        <CardContent className="flex-grow flex flex-col justify-between md:px-16 md:pt-12 pt-4 overflow-y-auto h-full">
+        <CardContent className="flex-grow flex flex-col justify-between md:px-20 md:pt-12 pt-4 overflow-y-auto h-full">
 
           <StepContent step={step} />
           <Button
