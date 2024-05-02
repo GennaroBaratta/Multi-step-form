@@ -1,15 +1,16 @@
 'use client'
 import { useState } from 'react';
-import { Step, Field } from "@/app/Step";
+import { Step, FormElement } from "@/app/Step";
 import Image from 'next/image'
-import { Check } from 'lucide-react';
+import { Switch } from "@/components/ui/switch"
+
 
 
 // This would be the individual field components you might have
-const TextField = ({ field }: { field: Field }) => (
-    <div key={field.id} className="flex flex-col gap-1 mb-4">
+const TextField = ({ field }: { field: FormElement }) => (
+    <div className='w-full'>
         <label htmlFor={field.id}
-            className="block text-gray-700 text-sm font-semibold">{field.label}</label>
+            className="block text-gray-700 text-sm font-semibold pb-1">{field.label}</label>
         <input type={field.type} id={field.id} placeholder={field.placeholder}
             className="shadow-sm appearance-none border rounded 
                             w-full py-2 px-3
@@ -18,10 +19,10 @@ const TextField = ({ field }: { field: Field }) => (
     </div>
 );
 
-const EmailField = ({ field }: { field: Field }) => (
-    <div key={field.id} className="flex flex-col gap-1 mb-4">
+const EmailField = ({ field }: { field: FormElement }) => (
+    <div className='w-full'>
         <label htmlFor={field.id}
-            className="block text-gray-700 text-sm font-semibold">{field.label}</label>
+            className="block text-gray-700 text-sm font-semibold pb-1">{field.label}</label>
         <input type={field.type} id={field.id} placeholder={field.placeholder}
             className="shadow-sm appearance-none border rounded 
                             w-full py-2 px-3
@@ -30,14 +31,26 @@ const EmailField = ({ field }: { field: Field }) => (
     </div>
 );
 
-const RadioField = ({ field, checkedValue, setCheckedValue }: { field: Field, checkedValue: string, setCheckedValue: Function }) => {
+const PhoneField = ({ field }: { field: FormElement }) => (
+    <div className='w-full'>
+        <label htmlFor={field.id}
+            className="block text-gray-700 text-sm font-semibold pb-1">{field.label}</label>
+        <input type={field.type} id={field.id} placeholder={field.placeholder}
+            className="shadow-sm appearance-none border rounded 
+                            w-full py-2 px-3
+                            text-gray-700 leading-tight 
+                            focus:outline-none focus:shadow-outline" />
+    </div>
+);
+
+const RadioField = ({ field, checkedValue, setCheckedValue }: { field: FormElement, checkedValue: string, setCheckedValue: Function }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCheckedValue(e.target.value);
     };
 
     return (
-        <div className="flex items-center space-x-3"
-            checked={checkedValue === field.id}
+        <div className="w-full flex items-start flex-col border-purplish-blue border-2 p-4 rounded-lg cursor-pointer"
+            // checked={checkedValue === field.id}
             onChange={handleChange}>
             {/* <input
                 type="radio"
@@ -61,7 +74,7 @@ const CheckboxField = ({
     isChecked,
     handleCheckboxChange,
 }: {
-    field: Field;
+    field: FormElement;
     isChecked: boolean;
     handleCheckboxChange: (id: string) => void;
 }) => {
@@ -91,12 +104,12 @@ const SwitchField = ({
     isMonthly,
     setBillingPeriod,
 }: {
-    field: Field;
+    field: FormElement;
     isMonthly: boolean;
     setBillingPeriod: (isMonthly: boolean) => void;
 }) => {
     return (
-        <div className="flex items-center justify-between">
+        <div className="w-full flex items-center justify-center bg-magnolia my-2 p-2">
             <span className="text-sm font-normal text-gray-500 mr-2">Monthly</span>
             <label htmlFor={field.id} className="relative inline-block w-12 mr-2 align-middle select-none">
                 <input
@@ -107,7 +120,7 @@ const SwitchField = ({
                     className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                 />
                 <span
-                    className={`toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer ${isMonthly ? 'bg-blue-500' : ''
+                    className={`toggle-label block overflow-hidden h-6 rounded-full cursor-pointer ${isMonthly ? 'bg-blue-500' : 'bg-gray-300'
                         }`}
                 ></span>
             </label>
@@ -130,12 +143,14 @@ export function StepContent({ step }: { step: Step }) {
             [id]: !prevSelected[id],
         }));
     };
-    const renderField = (field: Field) => {
+    const renderField = (field: FormElement) => {
         switch (field.type) {
             case 'text':
                 return <TextField field={field} />;
             case 'email':
                 return <EmailField field={field} />;
+            case 'phone':
+                return <PhoneField field={field} />;
             case 'radio':
                 return <RadioField
                     field={field}
@@ -160,10 +175,12 @@ export function StepContent({ step }: { step: Step }) {
         <div className="h-full">
             <h2 className="text-3xl font-semibold text-gray-900 mb-2">{step.title}</h2>
             <p className="text-gray-600 min-h-16">{step.description}</p>
-            <form>
-                {step.form.map((field: Field) => (
-                    <div key={field.id} >
-                        {renderField(field)}
+            <form className="flex flex-col gap-4 mb-4">
+                {step.rows.map((row: FormElement[]) => (
+                    <div className="flex flex-row gap-4">
+                        {row.map((field: FormElement) => (
+                            renderField(field)
+                        ))}
                     </div>
                 ))}
             </form>
