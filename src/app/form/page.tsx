@@ -1,5 +1,6 @@
 import MyForm from "./MyForm";
 import { steps } from "../Step";
+import MultiStepForm from "./MultiStepForm";
 
 export default function FormPage() {
 
@@ -11,7 +12,8 @@ export default function FormPage() {
         bg-[url('/images/bg-sidebar-mobile.svg')] 
         sm:bg-none">
             <h1>Form</h1>
-            <MyForm steps={steps} />
+            {/* <MyForm steps={steps} /> */}
+            <MultiStepForm></MultiStepForm>
         </main>
     )
 }
